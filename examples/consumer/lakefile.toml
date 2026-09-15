@@ -1,0 +1,13 @@
+name = "FPExamples"
+version = "0.1.0"
+defaultTargets = ["Examples"]
+# Share dependency sources and their compiled cache with the parent checkout.
+# A separate application can omit this setting and use its own .lake/packages.
+packagesDir = "../../.lake/packages"
+
+[[require]]
+name = "FP"
+path = "../.."
+
+[[lean_lib]]
+name = "Examples"

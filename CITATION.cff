@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "To cite the version of the proofs you used, see Zenodo (link pending)."
+type: software
+title: "FP: IEEE 754 arithmetic and floating-point numerical analysis in Lean"
+authors:
+  - given-names: "Marc A."
+    family-names: "Tunnell"
+version: 0.1.0
+date-released: "2026-09-15"
+license: "Apache-2.0"
+repository-code: "https://github.com/tunnellm/lean-ieee754"
+abstract: >-
+  A Lean 4 library for floating-point numerical error analysis, with traditional
+  and mixed-error models, explicit IEEE 754 binary32/binary64 software arithmetic,
+  summation and dot-product bounds, and compensated-reduction range certificates.
+  Proofs establish the stated formal specifications and their qualifications;
+  this release does not claim complete IEEE 754 or hardware conformance.
+keywords:
+  - Lean
+  - formal verification
+  - floating-point arithmetic
+  - numerical analysis
+  - IEEE 754

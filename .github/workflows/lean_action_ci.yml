@@ -1,0 +1,27 @@
+name: Lean Action CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      LEAN_NUM_THREADS: "2"
+
+    steps:
+      - uses: actions/checkout@v5
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: true
+          build-args: "FP FP.Verification fp"
+          use-mathlib-cache: true
+      - name: Build downstream examples
+        working-directory: examples/consumer
+        run: lake build
