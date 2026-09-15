@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "To cite the version of the proofs you used, see Zenodo (link pending)."
+message: "To cite the version of the proofs you used, see https://doi.org/10.5281/zenodo.22775703."
 type: software
 title: "FP: IEEE 754 arithmetic and floating-point numerical analysis in Lean"
 authors:
@@ -7,6 +7,7 @@ authors:
     family-names: "Tunnell"
 version: 0.1.0
 date-released: "2026-09-15"
+doi: "10.5281/zenodo.22775704"
 license: "Apache-2.0"
 repository-code: "https://github.com/tunnellm/lean-ieee754"
 abstract: >-

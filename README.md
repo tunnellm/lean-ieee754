@@ -55,11 +55,9 @@ repository.
 
 ## Citation
 
-To cite the version of the proofs you used, see Zenodo (link pending).
+To cite the version of the proofs you used, see [Zenodo](https://doi.org/10.5281/zenodo.22775703).
 
-![Zenodo DOI pending](https://img.shields.io/badge/Zenodo-DOI_pending-lightgrey)
-
-<!-- Replace the pending link and badge with the Zenodo concept DOI after archival. -->
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22775703.svg)](https://doi.org/10.5281/zenodo.22775703)
 
 ## Total IEEE formalization: implementation in progress
 
