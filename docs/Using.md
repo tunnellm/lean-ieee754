@@ -6,23 +6,23 @@ Use the exact toolchain from `lean-toolchain` (currently Lean 4.33.1).
 
 ## A local project
 
-For sibling directories `FP/` and `Krylov/`, put this in `Krylov/lakefile.toml`:
+For sibling directories `FP/` and `Analysis/`, put this in `Analysis/lakefile.toml`:
 
 ```toml
-name = "Krylov"
+name = "Analysis"
 version = "0.1.0"
-defaultTargets = ["Krylov"]
+defaultTargets = ["Analysis"]
 
 [[require]]
 name = "FP"
 path = "../FP"
 
 [[lean_lib]]
-name = "Krylov"
+name = "Analysis"
 ```
 
-Copy `FP/lean-toolchain` to `Krylov/lean-toolchain`, create `Krylov/Krylov.lean`,
-and put `import FP` in it. In `Krylov/`, run:
+Copy `FP/lean-toolchain` to `Analysis/lean-toolchain`, create `Analysis/Analysis.lean`,
+and put `import FP` in it. In `Analysis/`, run:
 
 ```sh
 lake update
@@ -76,6 +76,10 @@ Use `#check` or Lean's hover information for the exact hypotheses and result.
 The [downstream example package](../examples/consumer/README.md) demonstrates
 actual theorem applications, including proofs for every input in a domain.
 
+For detailed statements and qualifications, use the references for
+[arithmetic](Arithmetic.md), [reductions](Reductions.md),
+[compensation](Compensated.md), and [proof foundations](Foundations.md).
+
 ## Give a new agent this context
 
 Place the following in the consuming project's `AGENTS.md`, adjusting the
@@ -83,8 +87,9 @@ dependency path for a local checkout or `.lake/packages/FP` for a Git dependency
 
 ```markdown
 This project uses the FP Lean library for floating-point error analysis.
-Its source is at ../FP. Read ../FP/docs/Using.md, ../FP/README.md, and
-../FP/IEEE754Coverage.md before adding floating-point models or error lemmas.
+Its source is at ../FP. Start with ../FP/docs/Using.md and ../FP/README.md.
+Read the relevant topical reference linked there and ../FP/IEEE754Coverage.md
+before adding floating-point models or error lemmas.
 Search existing declarations and check their types in Lean; reuse the library
 through imports. Use Lean MCP when available to check theorem applications.
 
@@ -98,20 +103,18 @@ State any remaining algorithm assumptions explicitly. Check the resulting
 theorems and their axiom dependencies. Run lake build in this project.
 ```
 
-## A starting point for Krylov methods
+## Build an algorithm-level proof
 
 First describe the mathematical algorithm and its precise floating-point
-evaluation schedule. Represent Euclidean vectors with a type whose norm has
-the intended meaning, such as `EuclideanSpace ℝ (Fin n)`. Establish adapters
-between that representation and FP's indexed reductions.
+evaluation schedule, including the format, rounding mode, and operation order.
+Relate the stored values to the mathematical inputs through decoding.
 
-Then assemble row-wise dot-product bounds into a matrix-vector bound, combine
-the scalar addition/multiplication lemmas into an `axpy` bound, and use division
-and square-root lemmas for normalization. Orthogonalization and Arnoldi/Lanczos
-relations can build on those components. These vector and Krylov theorems are
-future work; importing FP supplies their scalar numerical foundations.
+Apply scalar and reduction theorems to obtain local error bounds. Combine
+those bounds using the vector, matrix, or recurrence structure of the algorithm.
+Prove the required range conditions, nonzero denominators, and size hypotheses;
+use an executable certificate where a suitable checker is available.
 
 For proofs that permit gradual underflow, use mixed absolute/relative bounds.
-Pure relative results have stronger hypotheses. Theorems about FP's reference
-software or Lean's native logical model do not by themselves verify a BLAS
-implementation, compiler optimization, or hardware execution.
+Pure relative results have stronger hypotheses. Keep these conditions explicit
+in the final theorem so that it can be applied to any computation satisfying
+the specified operation contracts and evaluation schedule.

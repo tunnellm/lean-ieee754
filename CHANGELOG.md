@@ -21,6 +21,5 @@ dependency revisions are recorded in `lake-manifest.json`.
 
 The project does not assert full IEEE 754 conformance. Remaining operations,
 written-standard correspondence review, and optional native bridges are listed
-in [IEEE754Coverage.md](IEEE754Coverage.md). Hardware/compiler verification and
-Krylov-method theorems are outside this release. The API may change before 1.0;
+in [IEEE754Coverage.md](IEEE754Coverage.md). The API may change before 1.0;
 pin a release commit for reproducible downstream proofs.

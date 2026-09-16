@@ -1,8 +1,10 @@
 # FP repository guidance
 
 This is a Lean 4 floating-point numerical-analysis library. Start with
-`docs/Using.md` for the theorem map, `README.md` for detailed statements, and
-`IEEE754Coverage.md` for the precise IEEE scope and remaining obligations.
+`docs/Using.md` for the theorem map and `README.md` for orientation. Detailed
+statements are grouped in `docs/Arithmetic.md`, `docs/Reductions.md`,
+`docs/Compensated.md`, and `docs/Foundations.md`. See `IEEE754Coverage.md` for
+the precise IEEE scope and remaining obligations.
 
 Use the pinned Lean/mathlib versions. Search existing declarations before
 introducing models or lemmas; use Lean MCP when available to inspect types,
