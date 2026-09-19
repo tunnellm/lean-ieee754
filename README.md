@@ -4,6 +4,12 @@ FP is a Lean 4 library for proving error bounds for floating-point computations.
 It connects explicit IEEE binary32/binary64 arithmetic to real-number statements
 about rounding error, summation, and dot products.
 
+> **Development provenance:** This library’s code, proofs, and documentation were
+> written primarily by large language models under human direction. Lean checks
+> the formal proofs against their stated definitions and assumptions. The
+> formalization’s correspondence to IEEE 754 and its numerical-analysis claims
+> has not yet undergone independent expert review.
+
 The intended workflow is to compose existing numerical bounds into a proof of
 your algorithm. The [usage guide](docs/Using.md) maps common tasks to theorems.
 
